@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div>
+        <div class="login">
+            <h1>Welcome to the Loan status Prediction</h1>
+        </div>
+        <div>
+            <form method="post" accept-charset="UTF-8">
+                <div class="input features">
+                    <label for="">Enter Loan Id</label>
+                    <input type="text" class="loanid" placeholder="Enter Loan ID Ex:LP001002">
+                        <div class="Enter_your_Gender">
+                            <label class="Genderlabel">Gender</label>
+                            <select name="gender" aria-placeholder="Enter Your gender">
+                                <option class="male_female_gender" aria-placeholder="Enter your Gender">Select your Gender</option>
+                                <option value="male">
+                                    Male
+                                </option>
+                                <option value="Female">
+                                    Female
+                                </option>
+                            </select>
+                        </div>
+                        <div class="Married_status">
+                            <label for="">Married Status</label>
+                            <select name="married_status" aria-placeholder="Enter your married status">
+                                <option class="male_female_status" aria-placeholder="Enter your married status">Select your married status</option>
+                                <option value="Yes">
+                                    Yes
+                                </option>
+                                <option value="No">
+                                    No
+                                </option>
+                            </select>
+                            <div class="dependent">
+                                <input type="text" placeholder="Enter dependent 0 or 1">
+
+                            </div>
+                            <div class="Education">
+                                <label for="">Education</label>
+                                <select name="Education_status" >
+                                    <option value="">Select your Education</option>
+                                    <option value="Graduate">
+                                        Graduate
+                                    </option>
+                                    <option value="Not Graduate">
+                                        Not Graduate
+                                    </option>
+                                </select>
+
+                            </div>
+                            <div class="self_employed">
+                                <label for="">Self_Employed</label>
+                                <select name="Self_Employed" id="">Self_Employed
+                                    <option value="Yes">
+                                        Yes
+                                    </option>
+                                    <option value="No">
+                                        No
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="Applicantincome">
+                                <label for="">Applicantincome</label>
+                                <input type="text" name="Enter Applicant income">
+                            </div>
+                            <div class="CoapplicantIncome">
+                                <label for="">CoapplicantIncome</label>
+                                <input type="text" name="Enter Coapplicant income">
+                            </div>
+                            <div class="LoanAmount">
+                                <label for="">LoanAmount</label>
+                                <input type="text" name="LoanAmount">
+                            </div>
+                            <div class="Loan_Amount_Term">
+                                <label for="">Loan_Amount_Term</label>
+                                <input type="text" name="Loan_Amount_Term">
+                            </div>
+                            <div class="Credit_History">
+                                <label for="">Credit_History</label>
+                                <input type="text" name="Credit_History lies 0  to 1.0">
+                            </div>
+                            <div class="Property_Area">
+                                <label for="">Property_Area</label>
+                                <select name="Select Property_Area" id="">Property_Area
+                                <option value="">Select Property_Area</option>
+        
+                                <option value="Urban">
+                                    Urban
+                                </option>
+                                <option value="Rural">
+                                    Rural
+                                </option>
+                                <option value="Semiurban">
+                                    Semiurban
+                                </option>
+                                </select>
+                            </div>
+        
+                </div>
+            </form>
+        </div>
+        <div class="button">
+            <button class="btn-class">Predict</button>
+        </div>
+    </div>
+</body>
+</html>
