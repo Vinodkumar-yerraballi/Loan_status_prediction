@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
-    <div>
+    <div class="main_page">
         <div class="login">
             <h1>Welcome to the Loan status Prediction</h1>
         </div>
         <div>
-            <form method="post" accept-charset="UTF-8">
+            <form  action="Prediction" method="post" accept-charset="UTF-8">
                 <div class="input features">
                     <label for="">Enter Loan Id</label>
-                    <input type="text" class="loanid" placeholder="Enter Loan ID Ex:LP001002">
-                        <div class="Enter_your_Gender">
+                    <input type="text" class="loanid" placeholder="Enter Loan ID Ex:LP001002" name="loan_id">
+                        <div class="Enter_your_Gender" name="genders">
                             <label class="Genderlabel">Gender</label>
                             <select name="gender" aria-placeholder="Enter Your gender">
                                 <option class="male_female_gender" aria-placeholder="Enter your Gender">Select your Gender</option>
@@ -29,7 +29,7 @@
                                 </option>
                             </select>
                         </div>
-                        <div class="Married_status">
+                        <div class="Married_status" name="married">
                             <label for="">Married Status</label>
                             <select name="married_status" aria-placeholder="Enter your married status">
                                 <option class="male_female_status" aria-placeholder="Enter your married status">Select your married status</option>
@@ -40,11 +40,11 @@
                                     No
                                 </option>
                             </select>
-                            <div class="dependent">
+                            <div class="dependent" name="dependents">
                                 <input type="text" placeholder="Enter dependent 0 or 1">
 
                             </div>
-                            <div class="Education">
+                            <div class="Education" name="education">
                                 <label for="">Education</label>
                                 <select name="Education_status" >
                                     <option value="">Select your Education</option>
@@ -57,7 +57,7 @@
                                 </select>
 
                             </div>
-                            <div class="self_employed">
+                            <div class="self_employed" name="self_employed">
                                 <label for="">Self_Employed</label>
                                 <select name="Self_Employed" id="">Self_Employed
                                     <option value="Yes">
@@ -68,27 +68,27 @@
                                     </option>
                                 </select>
                             </div>
-                            <div class="Applicantincome">
+                            <div class="Applicantincome" name="applicantincome">
                                 <label for="">Applicantincome</label>
                                 <input type="text" name="Enter Applicant income">
                             </div>
-                            <div class="CoapplicantIncome">
+                            <div class="CoapplicantIncome" name="coapplicantincome">
                                 <label for="">CoapplicantIncome</label>
                                 <input type="text" name="Enter Coapplicant income">
                             </div>
-                            <div class="LoanAmount">
+                            <div class="LoanAmount" name="loanamount">
                                 <label for="">LoanAmount</label>
                                 <input type="text" name="LoanAmount">
                             </div>
-                            <div class="Loan_Amount_Term">
+                            <div class="Loan_Amount_Term" name="loan_amount_term">
                                 <label for="">Loan_Amount_Term</label>
                                 <input type="text" name="Loan_Amount_Term">
                             </div>
-                            <div class="Credit_History">
+                            <div class="Credit_History" name="credit_history">
                                 <label for="">Credit_History</label>
                                 <input type="text" name="Credit_History lies 0  to 1.0">
                             </div>
-                            <div class="Property_Area">
+                            <div class="Property_Area" name="property_area">
                                 <label for="">Property_Area</label>
                                 <select name="Select Property_Area" id="">Property_Area
                                 <option value="">Select Property_Area</option>
