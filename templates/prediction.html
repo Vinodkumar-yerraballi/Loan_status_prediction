@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="main_page">
         <div class="login">
-            <h1>Welcome to the Loan status Prediction</h1>
+            <h1 >Welcome to the Loan status Prediction</h1>
         </div>
         <div>
-            <form  action="Prediction" method="post" accept-charset="UTF-8">
+            <form id="prediction-form"  action="Prediction" method="post" accept-charset="UTF-8">
                 <div class="input features">
                     <label for="">Enter Loan Id</label>
                     <input type="text" class="loanid" placeholder="Enter Loan ID Ex:LP001002" name="loan_id">
@@ -41,7 +41,13 @@
                                 </option>
                             </select>
                             <div class="dependent" name="dependents">
-                                <input type="text" placeholder="Enter dependent 0 or 1">
+                                <label for="">Dependent</label>
+                                <select name="Dependent" id="Dependent">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3+">3+</option>
+                                </select>
 
                             </div>
                             <div class="Education" name="education">
@@ -60,6 +66,7 @@
                             <div class="self_employed" name="self_employed">
                                 <label for="">Self_Employed</label>
                                 <select name="Self_Employed" id="">Self_Employed
+                                    <option value="">Self_Employed</option>
                                     <option value="Yes">
                                         Yes
                                     </option>
@@ -68,19 +75,19 @@
                                     </option>
                                 </select>
                             </div>
-                            <div class="Applicantincome" name="applicantincome">
+                            <div class="Applicantincome" name="Applicantincome" id="Applicantincome">
                                 <label for="">Applicantincome</label>
                                 <input type="text" name="Enter Applicant income">
                             </div>
-                            <div class="CoapplicantIncome" name="coapplicantincome">
+                            <div class="CoapplicantIncome" name="CoapplicantIncome" id="CoapplicantIncome">
                                 <label for="">CoapplicantIncome</label>
                                 <input type="text" name="Enter Coapplicant income">
                             </div>
-                            <div class="LoanAmount" name="loanamount">
+                            <div class="LoanAmount" name="LoanAmount" id="LoanAmount">
                                 <label for="">LoanAmount</label>
                                 <input type="text" name="LoanAmount">
                             </div>
-                            <div class="Loan_Amount_Term" name="loan_amount_term">
+                            <div class="Loan_Amount_Term" name="Loan_Amount_Term" id="Loan_Amount_Term">
                                 <label for="">Loan_Amount_Term</label>
                                 <input type="text" name="Loan_Amount_Term">
                             </div>
@@ -106,11 +113,13 @@
                             </div>
         
                 </div>
+                <div class="button">
+                    <button class="btn btn-primary" type="Submit">Predict</button>
+                </div>
             </form>
         </div>
-        <div class="button">
-            <button class="btn-class">Predict</button>
-        </div>
+            
+
     </div>
 </body>
 </html>
