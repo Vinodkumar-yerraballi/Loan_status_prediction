@@ -1,63 +1,111 @@
-from flask import Flask,request,render_template,jsonify
-import numpy as np
+# save this as app.py
+from flask import Flask, escape, request, render_template
 import pickle
-import os
-import pandas as pd
-from sklearn.preprocessing import LabelEncoder
+import numpy as np
 
-
-#Create a new Flask instance
-app = Flask(__name__,template_folder='templates')
-
-#Load the model
-model = pickle.load(open('model.pkl','rb'))
-data=pd.read_csv('loan_prediction.csv')
-#LabelEncoding is
-label=LabelEncoder()
-data['Gender']=label.fit_transform(data['Gender'])
-data['Married']=label.fit_transform(data['Married'])
-data['Dependents']=label.fit_transform(data['Dependents'])
-data['Self_Employed']=label.fit_transform(data['Self_Employed'])
-data['Loan_ID']=label.fit_transform(data['Loan_ID'])
-data['Property_Area']=label.fit_transform(data['Property_Area'])
-
-
+app = Flask(__name__)
+model = pickle.load(open('knn.pkl', 'rb'))
 
 @app.route('/')
 def home():
-    return render_template('prediction.html')
-@app.route('/Prediction',methods=['POST'])
-def predict():
+    return render_template("index.html")
 
-    if request.method == 'POST':
-        loan_id = request.form['loan_id']
-        genders = request.form['gender']
-        married = request.form['married_status']
+
+@app.route('/predict', methods=['GET', 'POST'])
+def predict():
+    if request.method ==  'POST':
+        
+        gender = request.form['gender']
+        married = request.form['married']
         dependents = request.form['dependents']
         education = request.form['education']
-        self_employed = request.form['self_employed']
-        applicantincome = float(request.form['Applicantincome'])
-        coapplicantincome = float(request.form['Coapplicantincome'])
-        loanamount = float(request.form['Loanamount'])
-        loan_amount_term = float(request.form['Loan_amount_term'])
-        credit_history = float(request.form['Credit_history'])
-        property_area = request.form['property_area']
+        employed = request.form['employed']
+        credit = float(request.form['credit'])
+        area = request.form['area']
+        ApplicantIncome = float(request.form['ApplicantIncome'])
+        CoapplicantIncome = float(request.form['CoapplicantIncome'])
+        LoanAmount = float(request.form['LoanAmount'])
+        Loan_Amount_Term = float(request.form['Loan_Amount_Term'])
 
-        # Perform prediction using the model
-        result = model.Prediction(loan_id, genders, married, dependents, education, self_employed, applicantincome, coapplicantincome, loanamount, loan_amount_term, credit_history, property_area)
-
-        if result == 'N':
-            prediction = "Not Successful "
+        # gender
+        if (gender == "Male"):
+            gender=1
         else:
-            prediction = "Successful"
+            gender=0
+        
+        # married
+        if(married=="Yes"):
+            married = 1
+        else:
+            married=0
 
-        return render_template('prediction.html', prediction_text="The Person  {} eligible for loan".format(prediction))
+        # dependents
+        if(dependents=='1'):
+            dependents = 1
+            dependents = 0
+            dependents = 0
+        elif(dependents == '2'):
+            dependents = 0
+            dependents = 1
+            dependents = 0
+        elif(dependents=="3+"):
+            dependents = 0
+            dependents = 0
+            dependents = 1
+        else:
+            dependents = 0
+            dependents = 0
+            dependents = 0  
+
+        # education
+        if (education=="Not Graduate"):
+            education=1
+        else:
+            education=0
+
+        # employed
+        if (employed == "Yes"):
+            employed=1
+        else:
+            employed=0
+
+        # property area
+
+        if(area=="Semiurban"):
+            area=1
+            area=0
+        elif(area=="Urban"):
+            area=0
+            area=1
+        else:
+            area=0
+            area=0
+
+
+        ApplicantIncomelog = np.log(ApplicantIncome)
+        totalincomelog = np.log(ApplicantIncome+CoapplicantIncome)
+        LoanAmountlog = np.log(LoanAmount)
+        Loan_Amount_Termlog = np.log(Loan_Amount_Term)
+
+        prediction = model.predict([[credit, ApplicantIncomelog,LoanAmountlog, Loan_Amount_Termlog, totalincomelog, gender, married, dependents, education, employed,area ]])
+
+        # print(prediction)
+
+        if(prediction==1):
+            prediction="Yes"
+        else:
+            prediction="No"
+
+
+        return render_template("prediction.html", prediction_text="loan status is {}".format(prediction))
 
 
 
 
+    else:
+        return render_template("prediction.html")
 
 
 
-if __name__== '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
